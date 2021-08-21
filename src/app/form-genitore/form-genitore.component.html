@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="row justify-content-center">
+            <h2>Dati Genitore</h2>
+        </div>
+        <form (ngSubmit)="submit()" [formGroup]="formGenitore">
+            <div class="card">
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-6 p-md-3">
+                        <label for="firstname6">Nome</label>
+                        <input id="firstname6" type="text" formControlName="nomeGenitore" pInputText>
+                    </div>
+                    <div class="p-field p-col-6 p-md-3">
+                        <label for="lastname6">Cognome</label>
+                        <input id="lastname6" type="text" formControlName="cognomeGenitore" pInputText>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="address">Data di nascita</label>
+                        <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"
+                            formControlName="nascitaGenitore"></p-calendar>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="city">Luogo di nascita</label>
+                        <input id="city" type="text" formControlName="luogoNascitaGenitore" pInputText>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="state">Provincia di nascita</label>
+                        <input type="text" pInputText formControlName="provNascitaGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Sesso</label>
+                        <p-dropdown [options]="sex" placeholder="Sesso" [showClear]="true"
+                            formControlName="sessoGenitore">
+                        </p-dropdown>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Indirizzo di residenza</label>
+                        <input id="zip" type="text" pInputText formControlName="indirizzoGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Numero civico</label>
+                        <p-inputNumber [useGrouping]="false" formControlName="civicoGenitore"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">CAP</label>
+                        <p-inputNumber [useGrouping]="false" formControlName="capGenitore"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Comune di residenza</label>
+                        <input id="zip" type="text" formControlName="comuneGenitore" pInputText>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Provincia di residenza</label>
+                        <input id="zip" type="text" pInputText formControlName="provGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Codice fiscale</label>
+                        <input id="zip" type="text" pInputText formControlName="codfiscGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Nazionalità</label>
+                        <input id="zip" type="text" pInputText formControlName="nazGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Cittadinanza</label>
+                        <input id="zip" type="text" pInputText formControlName="cittadinanzaGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Indirizzo E-Mail</label>
+                        <input id="zip" type="email" pInputText formControlName="emailGenitore">
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="zip">Telefono</label>
+                        <input id="zip" type="text" pInputText formControlName="telefonoGenitore">
+                    </div>
+                    <div class="row ml-2">
+                        <div class="col-3">
+                            <p-button label="Invia" type="submit" icon="pi pi-check"
+                                [disabled]="!this.formGenitore.valid"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
