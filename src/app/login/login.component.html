@@ -1,0 +1,38 @@
+<p-toast></p-toast>
+
+<div class="container-fluid">
+  <br />
+  <div class="row justify-content-center" style="text-align: center">
+    <h2>Accedi</h2>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="form-container-login">
+        <br />
+        <br />
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <h5 class="form-label">Nome utente:</h5>
+          <input type="text" pInputText formControlName="username" />
+          <br />
+          <br />
+          <h5 class="form-label">Password:</h5>
+          <input type="password" pInputText formControlName="password" />
+          <br />
+          <br />
+          <br />
+          <div class="row">
+            <p-button
+              label="Accedi"
+              icon="pi pi-user"
+              styleClass="p-button-rounded login-button"
+              [loading]="showLoading"
+              [disabled]="!this.loginForm.valid"
+              type="submit"
+            ></p-button>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

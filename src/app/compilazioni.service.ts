@@ -1,17 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CompilazioniService {
-
   datiTemporanei: any = {};
-  url: string= "http://localhost:3000/richieste"
+  url: string = '/richieste';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  addSubmission(submission: any){
-    return this.http.post(this.url, submission);
+  getAll() {
+    return this.http.get(`${environment.apiUrl}${this.url}`);
+  }
+
+  addSubmission(submission: any) {
+    return this.http.post(`${environment.apiUrl}${this.url}`, submission);
   }
 }

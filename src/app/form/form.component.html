@@ -1,85 +1,168 @@
-<div class="row">
+<app-header></app-header>
+
+<div class="form-container">
+  <div class="row">
     <div class="col-10 offset-1">
-        <div class="row justify-content-center">
-            <h2>Dati Atleta</h2>
-        </div>
-        <form (ngSubmit)="submit()" [formGroup]="formAtleta">
-            <div class="card">
-                <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col-6 p-md-3">
-                        <label for="firstname6">Nome</label>
-                        <input id="firstname6" type="text" formControlName="nomeAtleta" pInputText>
-                    </div>
-                    <div class="p-field p-col-6 p-md-3">
-                        <label for="lastname6">Cognome</label>
-                        <input id="lastname6" type="text" formControlName="cognomeAtleta" pInputText>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="address">Data di nascita</label>
-                        <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"
-                            formControlName="nascitaAtleta"></p-calendar>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="city">Luogo di nascita</label>
-                        <input id="city" type="text" formControlName="luogoNascitaAtleta" pInputText>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="state">Provincia di nascita</label>
-                        <input type="text" pInputText formControlName="provNascitaAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Sesso</label>
-                        <p-dropdown [options]="sex" placeholder="Sesso" [showClear]="true"
-                            formControlName="sessoAtleta">
-                        </p-dropdown>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Indirizzo di residenza</label>
-                        <input id="zip" type="text" pInputText formControlName="indirizzoAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Numero civico</label>
-                        <p-inputNumber [useGrouping]="false" formControlName="civicoAtleta"></p-inputNumber>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">CAP</label>
-                        <p-inputNumber [useGrouping]="false" formControlName="capAtleta"></p-inputNumber>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Comune di residenza</label>
-                        <input id="zip" type="text" formControlName="comuneAtleta" pInputText>
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Provincia di residenza</label>
-                        <input id="zip" type="text" pInputText formControlName="provAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Codice fiscale</label>
-                        <input id="zip" type="text" pInputText formControlName="codfiscAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Cittadinanza</label>
-                        <input id="zip" type="text" pInputText formControlName="cittadinanzaAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Nazionalità</label>
-                        <input id="zip" type="text" pInputText formControlName="nazAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Scuola</label>
-                        <input id="zip" type="text" pInputText formControlName="scuolaAtleta">
-                    </div>
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="zip">Classe</label>
-                        <input id="zip" type="text" pInputText formControlName="classeAtleta">
-                    </div>
-                    <div class="row ml-2">
-                        <div class="col-3">
-                            <p-button label="Prosegui" type="submit" icon="pi pi-check" [disabled]="!this.formAtleta.valid"></p-button>
-                        </div>
-                    </div>
-                </div>
+      <div class="row justify-content-center">
+        <h2>Dati Atleta</h2>
+      </div>
+      <form (ngSubmit)="submit()" [formGroup]="formAtleta">
+        <div class="card">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-6 p-md-3">
+              <label for="firstname6">Nome</label>
+              <input
+                id="firstname6"
+                type="text"
+                formControlName="nomeAtleta"
+                pInputText
+              />
             </div>
-        </form>
+            <div class="p-field p-col-6 p-md-3">
+              <label for="lastname6">Cognome</label>
+              <input
+                id="lastname6"
+                type="text"
+                formControlName="cognomeAtleta"
+                pInputText
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="address">Data di nascita</label>
+              <p-calendar
+                [monthNavigator]="true"
+                [yearNavigator]="true"
+                yearRange="2000:2030"
+                formControlName="nascitaAtleta"
+              ></p-calendar>
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="city">Luogo di nascita</label>
+              <input
+                id="city"
+                type="text"
+                formControlName="luogoNascitaAtleta"
+                pInputText
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="state">Provincia di nascita</label>
+              <input
+                type="text"
+                pInputText
+                formControlName="provNascitaAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Sesso</label>
+              <p-dropdown
+                [options]="sex"
+                placeholder="Sesso"
+                [showClear]="true"
+                formControlName="sessoAtleta"
+              >
+              </p-dropdown>
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Indirizzo di residenza</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="indirizzoAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Numero civico</label>
+              <p-inputNumber
+                [useGrouping]="false"
+                formControlName="civicoAtleta"
+              ></p-inputNumber>
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">CAP</label>
+              <p-inputNumber
+                [useGrouping]="false"
+                formControlName="capAtleta"
+              ></p-inputNumber>
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Comune di residenza</label>
+              <input
+                id="zip"
+                type="text"
+                formControlName="comuneAtleta"
+                pInputText
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Provincia di residenza</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="provAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Codice fiscale</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="codfiscAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Cittadinanza</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="cittadinanzaAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Nazionalità</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="nazAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Scuola</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="scuolaAtleta"
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+              <label for="zip">Classe</label>
+              <input
+                id="zip"
+                type="text"
+                pInputText
+                formControlName="classeAtleta"
+              />
+            </div>
+            <div class="row ml-2">
+              <div class="col-3">
+                <p-button
+                  label="Prosegui"
+                  type="submit"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  [disabled]="!this.formAtleta.valid"
+                ></p-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
