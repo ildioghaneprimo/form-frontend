@@ -1,3 +1,5 @@
+<script src="js/canvas-to-blob.min.js"></script>
+
 <app-loading-spinner *ngIf="showLoading; else showTable"></app-loading-spinner>
 
 <ng-template #showTable>
@@ -30,6 +32,116 @@
       </div>
     </div>
   </div>
+  <!--Dati nascosti per salvataggio in pdf-->
+  <div style="padding: 20px" id="datiAtleta" *ngIf="showInfo">
+    <div>
+      <h4>Dati Atleta</h4>
+      <br />
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nome:</h4>
+        {{ this.selectedComp.nomeAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cognome:</h4>
+        {{ this.selectedComp.cognomeAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Sesso:</h4>
+        {{ this.selectedComp.sessoAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nato/a il:</h4>
+        {{ formatDate(this.selectedComp.nascitaAtleta) }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">A:</h4>
+        {{ this.selectedComp.luogoNascitaAtleta }} ({{
+          this.selectedComp.provNascitaAtleta
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Residente in:</h4>
+        {{ this.selectedComp.indirizzoAtleta }},
+        {{ this.selectedComp.civicoAtleta }},
+        {{ this.selectedComp.comuneAtleta }} ({{
+          this.selectedComp.provAtleta
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">CAP:</h4>
+        {{ this.selectedComp.capAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Codice Fiscale:</h4>
+        {{ this.selectedComp.codfiscAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nazionalità:</h4>
+        {{ this.selectedComp.nazAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cittadinanza:</h4>
+        {{ this.selectedComp.cittadinanzaAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Scuola:</h4>
+        {{ this.selectedComp.scuolaAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Classe:</h4>
+        {{ this.selectedComp.classeAtleta }}
+      </h4>
+      <br />
+      <h4>Dati Genitore</h4>
+      <br />
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nome:</h4>
+        {{ this.selectedComp.nomeGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cognome:</h4>
+        {{ this.selectedComp.cognomeGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Sesso:</h4>
+        {{ this.selectedComp.sessoGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nato/a il:</h4>
+        {{ formatDate(this.selectedComp.nascitaGenitore) }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">A:</h4>
+        {{ this.selectedComp.luogoNascitaGenitore }} ({{
+          this.selectedComp.provNascitaGenitore
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Residente in:</h4>
+        {{ this.selectedComp.indirizzoGenitore }},
+        {{ this.selectedComp.civicoGenitore }},
+        {{ this.selectedComp.comuneGenitore }} ({{
+          this.selectedComp.provGenitore
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">CAP:</h4>
+        {{ this.selectedComp.capGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Codice Fiscale:</h4>
+        {{ this.selectedComp.codfiscGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Email:</h4>
+        {{ this.selectedComp.emailGenitore }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cellulare:</h4>
+        {{ this.selectedComp.telefonoGenitore }}
+      </h4>
+    </div>
+  </div>
 </ng-template>
 
 <!--Info atleta-->
@@ -38,64 +150,81 @@
   [(visible)]="showInfo"
   [style]="{ width: '50vw' }"
   [modal]="true"
+  [draggable]="false"
   position="left"
   *ngIf="selectedComp"
 >
+  <div class="row">
+    <div class="col-3">
+      <button
+        pButton
+        pRipple
+        class="p-button-primary"
+        icon="pi pi-save"
+        label="Salva in PDF"
+        (click)="saveFile()"
+      ></button>
+    </div>
+  </div>
   <div style="padding: 20px">
-    <h4>Dati Atleta</h4>
-    <br />
-    <h4 class="dialog-row">
-      <h4 class="info-title">Nome:</h4>
-      {{ this.selectedComp.nomeAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Cognome:</h4>
-      {{ this.selectedComp.cognomeAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Sesso:</h4>
-      {{ this.selectedComp.sessoAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Nato/a il:</h4>
-      {{ formatDate(this.selectedComp.nascitaAtleta) }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">A:</h4>
-      {{ this.selectedComp.luogoNascitaAtleta }} ({{
-        this.selectedComp.provNascitaAtleta
-      }})
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Residente in:</h4>
-      {{ this.selectedComp.indirizzoAtleta }},
-      {{ this.selectedComp.civicoAtleta }},
-      {{ this.selectedComp.comuneAtleta }} ({{ this.selectedComp.provAtleta }})
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">CAP:</h4>
-      {{ this.selectedComp.capAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Codice Fiscale:</h4>
-      {{ this.selectedComp.codfiscAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Nazionalità:</h4>
-      {{ this.selectedComp.nazAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Cittadinanza:</h4>
-      {{ this.selectedComp.cittadinanzaAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Scuola:</h4>
-      {{ this.selectedComp.scuolaAtleta }}
-    </h4>
-    <h4 class="dialog-row">
-      <h4 class="info-title">Classe:</h4>
-      {{ this.selectedComp.classeAtleta }}
-    </h4>
+    <div>
+      <h4>Dati Atleta</h4>
+      <br />
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nome:</h4>
+        {{ this.selectedComp.nomeAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cognome:</h4>
+        {{ this.selectedComp.cognomeAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Sesso:</h4>
+        {{ this.selectedComp.sessoAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nato/a il:</h4>
+        {{ formatDate(this.selectedComp.nascitaAtleta) }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">A:</h4>
+        {{ this.selectedComp.luogoNascitaAtleta }} ({{
+          this.selectedComp.provNascitaAtleta
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Residente in:</h4>
+        {{ this.selectedComp.indirizzoAtleta }},
+        {{ this.selectedComp.civicoAtleta }},
+        {{ this.selectedComp.comuneAtleta }} ({{
+          this.selectedComp.provAtleta
+        }})
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">CAP:</h4>
+        {{ this.selectedComp.capAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Codice Fiscale:</h4>
+        {{ this.selectedComp.codfiscAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Nazionalità:</h4>
+        {{ this.selectedComp.nazAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Cittadinanza:</h4>
+        {{ this.selectedComp.cittadinanzaAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Scuola:</h4>
+        {{ this.selectedComp.scuolaAtleta }}
+      </h4>
+      <h4 class="dialog-row">
+        <h4 class="info-title">Classe:</h4>
+        {{ this.selectedComp.classeAtleta }}
+      </h4>
+    </div>
   </div>
 </p-dialog>
 
@@ -105,6 +234,7 @@
   [(visible)]="showInfo"
   [style]="{ width: '50vw' }"
   position="right"
+  [draggable]="false"
   *ngIf="selectedComp"
 >
   <div style="padding: 20px">
