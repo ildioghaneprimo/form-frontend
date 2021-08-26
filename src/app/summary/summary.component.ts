@@ -4,12 +4,14 @@ const moment = require('moment');
 import { saveAs } from 'file-saver';
 import * as FileSaver from 'file-saver';
 import domtoimage from 'dom-to-image';
+import { ConfirmationService, MessageService } from 'primeng/api';
 const { jsPDF } = require('jspdf');
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
+  providers: [ConfirmationService, MessageService],
 })
 export class SummaryComponent implements OnInit {
   showLoading: boolean = false;
@@ -19,7 +21,11 @@ export class SummaryComponent implements OnInit {
   showInfo: boolean = false;
   hidden: boolean = true;
 
-  constructor(private compilazioniService: CompilazioniService) {}
+  constructor(
+    private compilazioniService: CompilazioniService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   getAll() {
     this.showLoading = true;
@@ -87,5 +93,36 @@ export class SummaryComponent implements OnInit {
         .catch(function (error) {
           // Error Handling
         });
+  }
+
+  remove(id: string) {
+    this.showInfo = false;
+    this.confirmationService.confirm({
+      message: 'Eliminare questo modulo?',
+      accept: () => {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Eliminazione',
+          detail: 'Eliminazione in corso...',
+        });
+        this.compilazioniService.removeSubmission(id).subscribe(
+          (response) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Eliminazione',
+              detail: 'Modulo eliminato',
+            });
+            this.getAll();
+          },
+          (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Errore',
+              detail: 'Si è verificato un errore',
+            });
+          }
+        );
+      },
+    });
   }
 }

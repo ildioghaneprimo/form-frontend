@@ -18,4 +18,8 @@ export class CompilazioniService {
   addSubmission(submission: any) {
     return this.http.post(`${environment.apiUrl}${this.url}`, submission);
   }
+
+  removeSubmission(id: string) {
+    return this.http.delete(`${environment.apiUrl}${this.url}/remove/${id}`);
+  }
 }
