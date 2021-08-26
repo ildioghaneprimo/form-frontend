@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
     this.showLoading = true;
     console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(
-      (response) => {
+      (response: any) => {
         console.log(response);
+        sessionStorage.setItem('token', response.token);
         this.router.navigate(['summary']);
       },
       (error) => {
