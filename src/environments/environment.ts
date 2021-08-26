@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://protected-reaches-34317.herokuapp.com',
 };
 
 /*
