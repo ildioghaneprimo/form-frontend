@@ -12,22 +12,30 @@
   <br />
   <div class="row">
     <div class="col-10 offset-1">
-      <div class="row" *ngFor="let item of compilazioni">
-        <div class="col-3">
-          <h3>{{ item.nomeAtleta }}</h3>
-        </div>
-        <div class="col-3">
-          <h3>{{ item.cognomeAtleta }}</h3>
-        </div>
-        <div class="col-4 offset-2">
-          <button
-            pButton
-            pRipple
-            type="button"
-            label="Info"
-            class="p-button-rounded p-button-info"
-            (click)="info(item)"
-          ></button>
+      <div style="padding: 10px" *ngFor="let item of compilazioni">
+        <div class="card table-card">
+          <div class="card-body">
+            <div class="card-content">
+              <div class="row w-100" style="padding: 2px">
+                <div class="col-3">
+                  <h3>{{ item.nomeAtleta }}</h3>
+                </div>
+                <div class="col-3">
+                  <h3>{{ item.cognomeAtleta }}</h3>
+                </div>
+                <div class="col-4 offset-2">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    label="Info"
+                    class="p-button-rounded p-button-info"
+                    (click)="info(item)"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
