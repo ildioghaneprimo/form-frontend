@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "aps-virtus-torino": {
+      "hosting": {
+        "frontend-form": [
+          "aps-virtus-torino"
+        ]
+      }
+    }
+  }
+}
